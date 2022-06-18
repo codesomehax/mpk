@@ -1,0 +1,75 @@
+@startuml classes
+
+class Bus {
+    registrationNumber
+    model
+    year
+    currentLocation
+
+    updateCurrentLocation()
+}
+
+class Station {
+    id
+    name
+    location
+}
+
+class Garage {
+    id
+    location
+}
+
+class Route {
+    busNumber
+    region
+    stations : Station[]
+    arrivalTimes : Time[][]
+}
+
+class Region {
+    id
+    name
+}
+
+class Person {
+    firstName
+    lastName
+    birthday
+    email
+    phone
+}
+
+class Passenger {
+    ticketStartDate : Date
+    ticketEndDate : Date
+
+    buyTicket(startData : Date, length : Date)
+}
+
+class Employee {
+    PESEL
+}
+
+class Manager {
+    Region
+
+    sendBusToGarage(bus : Bus, garage : Garage)
+    sendBusToGarage(bus : Bus)
+    changeRouteNumber(route : Route, number : int)
+    changeRouteStations(route : Route, stations : Station[])
+    changeRouteArrivalTimestamps(route : Route, timestamps : Time[][])
+}
+
+Passenger --|> Person
+Employee --|> Person
+Manager --|> Employee
+
+Route --o Station
+Region --> Route
+Region --* Manager
+
+
+
+
+@enduml
