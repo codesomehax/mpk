@@ -8,4 +8,8 @@ public class Employee extends Person {
         super(firstName, lastName, birthday, email, phone);
         this.PESEL = PESEL;
     }
+
+    public String getPESEL() {
+        return PESEL;
+    }
 }

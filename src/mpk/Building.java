@@ -10,4 +10,16 @@ public class Building {
         this.name = name;
         this.location = location;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int[] getLocation() {
+        return location;
+    }
 }

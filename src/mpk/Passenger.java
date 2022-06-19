@@ -11,4 +11,12 @@ public class Passenger extends Person {
         ticketStartDate = null;
         ticketEndDate = null;
     }
+
+    public LocalDate getTicketStartDate() {
+        return ticketStartDate;
+    }
+
+    public LocalDate getTicketEndDate() {
+        return ticketEndDate;
+    }
 }

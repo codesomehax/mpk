@@ -9,15 +9,18 @@ class Bus {
     updateCurrentLocation()
 }
 
-class Station {
+class Building {
     id
     name
     location
 }
 
+class Station {
+    visitedBy : Set<Integer>
+}
+
 class Garage {
-    id
-    location
+    acceptedModels : String[]
 }
 
 class Route {
@@ -64,6 +67,10 @@ class Manager {
 Passenger --|> Person
 Employee --|> Person
 Manager --|> Employee
+
+Station --|> Building
+Garage --|> Building
+Bus --o Garage
 
 Route --o Station
 Region --> Route

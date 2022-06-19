@@ -10,5 +10,9 @@ public class Station extends Building {
         visitedBy = new HashSet<Integer>();
     }
 
+    public HashSet<Integer> getVisitedBy() {
+        return visitedBy;
+    }
+
    
 }
