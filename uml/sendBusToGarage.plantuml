@@ -1,0 +1,11 @@
+@startuml sendBusToGarage
+
+(*) --> if "The given garage accepts this bus model" then
+        --> [yes] Bus heads over to the given garage
+        --> (*)
+    else
+        --> [no] Manager gets informed that this garage doesn't support this model
+        --> (*)
+    endif
+
+@enduml

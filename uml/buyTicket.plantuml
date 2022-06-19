@@ -1,0 +1,20 @@
+@startuml buyTicket
+
+(*) --> if "Passenger already has a ticket" then
+        --> [yes] if "The start date of the new ticket begins before end date of current ticket" then
+            --> [yes] "Purchase could not be realized"
+            else
+            --> [no] "Purchase has been realized"
+            endif
+        else
+        --> [no] if "New ticket begins today or later" then
+            --> [yes] "Purchase has been realized"
+            else
+            --> [no] "Purchase could not be realized"
+            endif
+        endif
+
+"Purchase has been realized" --> (*)
+"Purchase could not be realized" --> (*)
+
+@enduml

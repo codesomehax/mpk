@@ -1,0 +1,6 @@
+@startuml fireEmployee
+
+(*) --> Remove the employee from region's employees' list
+    --> (*)
+
+@enduml

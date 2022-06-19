@@ -1,0 +1,7 @@
+@startuml hireNewEmployee
+
+(*) --> Give new employee's personal data in
+    --> Add to the region's employees' list
+    --> (*)
+
+@enduml

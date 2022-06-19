@@ -1,0 +1,11 @@
+@startuml changeRouteNumber
+
+(*) --> if "There is no other route with this number in this region" then
+        --> [yes] Replace old number in all station's schedules of this route
+        --> Change the route number in the system
+        --> (*)
+    else
+        --> [no] Inform the manager about the inconsistency
+        --> (*)
+
+@enduml

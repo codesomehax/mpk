@@ -4,15 +4,9 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class Manager extends Employee {
-    private Region region;
 
     public Manager(String firstName, String lastName, String birthday, String email, String phone, String PESEL, Region region) {
-        super(firstName, lastName, birthday, email, phone, PESEL);
-        this.region = region;
-    }
-
-    public Region getRegion() {
-        return region;
+        super(firstName, lastName, birthday, email, phone, PESEL, region);
     }
     
     public void sendBusToGarage(Bus bus, Garage garage) {
@@ -51,5 +45,19 @@ public class Manager extends Employee {
         } else {
             System.out.println("A route with given number already exists in this region");
         }
+    }
+
+    public void sendBusOnRoute(Bus bus, Route route) {
+        bus.setCurrentRoute(route);
+    }
+
+    public void hireNewEmployee(Person employee, String PESEL) {
+        Employee emp = new Employee(employee.getFirstName(), employee.getLastName(), employee.getBirthday(), employee.getEmail(), employee.getPhone(), PESEL, getRegion());
+
+        getRegion().employees.add(emp);
+    }
+
+    public void fireEmployee(Employee employee) {
+        getRegion().employees.remove(employee);
     }
 }

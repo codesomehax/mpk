@@ -6,29 +6,33 @@ actor Person
 actor Employee
 
 usecase "Buy a ticket" as buyTicket
-usecase "Take a bus" as takeBus
 usecase "Work in a ticket window" as ticketWindow
 usecase "Send a bus to garage" as sendBusToGarage
+usecase "Send a bus on a route" as sendBusOnRoute
 usecase "Edit a route" as editRoute
 usecase "Change route number" as changeRouteNumber
-usecase "Change route stations" as changeRouteStations
-usecase "Change route arrival timestamps" as changeRouteArrivalTimestamps
-
+usecase "Change route schedule" as changeRouteSchedule
+usecase "Manage employees" as manageEmployees
+usecase "Hire new employee" as hireNewEmployee
+usecase "Fire employee" as fireEmployee
 
 Passenger --|> Person
 Employee --|> Person
 Manager --|> Employee
 
-changeRouteArrivalTimestamps --|> editRoute
+changeRouteSchedule --|> editRoute
 changeRouteNumber --|> editRoute
-changeRouteStations --|> editRoute
 
 Manager -- editRoute
 Manager -- sendBusToGarage
+Manager -- sendBusOnRoute
+
+hireNewEmployee --|> manageEmployees
+fireEmployee --|> manageEmployees
+Manager -- manageEmployees
 
 Employee -- ticketWindow
 
 Passenger -- buyTicket
-Passenger -- takeBus
 
 @enduml

@@ -1,12 +1,14 @@
 @startuml classes
 
 class Bus {
-    registrationNumber
-    model
-    year
-    currentLocation
+    registrationNumber : String
+    model : String
+    year : int
+    currentLocation : int[]
+    currentRoute : Route
+    goesTo : Building
 
-    updateCurrentLocation()
+    arriveAt(building : Building)
 }
 
 class Building {
@@ -20,48 +22,51 @@ class Station {
 }
 
 class Garage {
-    acceptedModels : String[]
+    acceptedModels : List<String>
 }
 
 class Route {
-    busNumber
-    region
-    stations : Station[]
-    arrivalTimes : Time[][]
+    routeNumber : int
+    region : Region
+    stations : List<Station>
+    arrivalTimes : List<List<LocalTime>>
 }
 
 class Region {
-    id
-    name
+    id : int
+    name : String
+    manager : Manager
+    employees : Set<Employee>
+    routes : Set<Routes>
 }
 
 class Person {
-    firstName
-    lastName
-    birthday
-    email
-    phone
+    firstName : String
+    lastName : String
+    birthday : String
+    email : String
+    phone : String
 }
 
 class Passenger {
-    ticketStartDate : Date
-    ticketEndDate : Date
+    ticketStartDate : LocalDate
+    ticketEndDate : LocalDate
 
     buyTicket(startData : Date, length : Date)
 }
 
 class Employee {
-    PESEL
+    PESEL : String
+    region : Region
 }
 
 class Manager {
-    Region
-
     sendBusToGarage(bus : Bus, garage : Garage)
-    sendBusToGarage(bus : Bus)
-    changeRouteNumber(route : Route, number : int)
-    changeRouteStations(route : Route, stations : Station[])
-    changeRouteArrivalTimestamps(route : Route, timestamps : Time[][])
+    sendBusOnRoute(bus : Bus, route : Route)
+    hireNewEmployee(employee : Person, PESEL : String)
+    fireEmployee(employee : Employee)
+    changeRouteNumber(routes : List<Route>, route : Route, routeNumber : int)
+    changeRoute(route : Route, station : List<Station>, arrivalTimes : List<List<LocalTime>>)
 }
 
 Passenger --|> Person
@@ -74,7 +79,7 @@ Bus --o Garage
 
 Route --o Station
 Region --> Route
-Region --* Manager
+Region --* Employee
 
 
 

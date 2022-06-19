@@ -1,0 +1,17 @@
+@startuml busArriveAt
+actor Bus
+
+Bus --> Building : Heads over to
+
+alt a station
+
+    loop until bus gets directed to garage
+    Bus --> Building : arrive at station
+    return : change to next station
+    end
+
+else a garage
+    Bus --> Building : stay in garage until sent on a route
+end
+
+@enduml

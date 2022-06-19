@@ -51,6 +51,12 @@ public class Bus {
         this.goesTo = goesTo;
     }
 
+    public void setCurrentRoute(Route route) {
+        this.currentRoute = route;
+        this.currentStationIndex = 0;
+        this.goesTo = route.getStations().get(0);
+    }
+
     public void arriveAt(Building building) {
         if (building instanceof Station) {
             currentStationIndex = (currentStationIndex + 1) % currentRoute.getStations().size();

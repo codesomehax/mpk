@@ -1,0 +1,14 @@
+@startuml changeRoute
+
+(*) --> if "Stations list size and arrival times list match" then
+        --> [yes] Remove this route from old station's schedule
+        --> Apply new stations to the route
+        --> Apply new arrival times to the route
+        --> Add this route to the new station's schedule
+        --> (*)
+    else
+        --> [no] Inform the manager about the inconsistency
+        --> (*)
+    endif
+
+@enduml
